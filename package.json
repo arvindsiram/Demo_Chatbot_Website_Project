@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "concurrently \"npm:start\" \"vite\"",
     "build": "vite build",
-    "start": "node app.js",
+    "start": "node app.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "npm run build && cp dist/index.html dist/404.html && npx gh-pages -d dist"
