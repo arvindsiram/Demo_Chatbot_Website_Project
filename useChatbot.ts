@@ -10,7 +10,10 @@ const useChatbot = (voiceflowScript: string) => {
     document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      // Clean up the script when the component unmounts
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, [voiceflowScript]);
 };

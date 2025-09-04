@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Shield, Car, Home, Briefcase, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { Heart, Shield, Car, Home, Briefcase, CheckCircle, ArrowRight } from 'lucide-react';
+import { useDarkMode } from '../../DarkModeContext';
 
 const Products: React.FC = () => {
+  // Removed unused useDarkMode variables
+  const { isDarkMode: _isDarkMode, toggleDarkMode: _toggleDarkMode } = useDarkMode();
   const [activeCategory, setActiveCategory] = useState('health');
 
   const categories = [
-    { id: 'health', name: 'Health Insurance', icon: <Heart className="h-6 w-6" />, color: 'red' },
-    { id: 'life', name: 'Life Insurance', icon: <Shield className="h-6 w-6" />, color: 'blue' },
-    { id: 'auto', name: 'Auto Insurance', icon: <Car className="h-6 w-6" />, color: 'green' },
-    { id: 'home', name: 'Home Insurance', icon: <Home className="h-6 w-6" />, color: 'yellow' },
-    { id: 'business', name: 'Business Insurance', icon: <Briefcase className="h-6 w-6" />, color: 'purple' }
+    { id: 'health', name: 'Health Insurance', icon: <Heart className="h-6 w-6" /> },
+    { id: 'life', name: 'Life Insurance', icon: <Shield className="h-6 w-6" /> },
+    { id: 'auto', name: 'Auto Insurance', icon: <Car className="h-6 w-6" /> },
+    { id: 'home', name: 'Home Insurance', icon: <Home className="h-6 w-6" /> },
+    { id: 'business', name: 'Business Insurance', icon: <Briefcase className="h-6 w-6" /> }
   ];
 
   const productDetails = {
@@ -139,19 +142,19 @@ const Products: React.FC = () => {
   const activeProducts = productDetails[activeCategory as keyof typeof productDetails];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-200 min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-900 to-blue-700 dark:from-blue-950 dark:to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Insurance Products</h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto">
             Choose from our comprehensive range of insurance products designed to protect every aspect of your life.
           </p>
         </div>
       </section>
 
       {/* Category Navigation */}
-      <section className="py-8 bg-white border-b">
+      <section className="py-8 bg-white dark:bg-gray-900 border-b dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
@@ -160,8 +163,8 @@ const Products: React.FC = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   activeCategory === category.id
-                    ? 'bg-blue-100 text-blue-700 border-2 border-blue-300'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 border-2 border-blue-300 dark:border-blue-700'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
                 {category.icon}
@@ -173,39 +176,39 @@ const Products: React.FC = () => {
       </section>
 
       {/* Product Details */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {activeProducts.title}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               {activeProducts.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeProducts.plans.map((plan, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+              <div key={index} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
                 <div className="p-8">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                    <p className="text-blue-600 font-semibold">Coverage: {plan.coverage}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{plan.name}</h3>
+                    <p className="text-blue-600 dark:text-blue-400 font-semibold">Coverage: {plan.coverage}</p>
                   </div>
                   
                   <div className="space-y-3 mb-6">
                     {plan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="border-t pt-6">
+                  <div className="border-t dark:border-gray-600 pt-6">
                     <div className="text-center mb-4">
-                      <p className="text-sm text-gray-500">Starting from</p>
-                      <p className="text-2xl font-bold text-blue-700">{plan.startingPrice}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Starting from</p>
+                      <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">{plan.startingPrice}</p>
                     </div>
                     
                     <Link
@@ -224,13 +227,13 @@ const Products: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               Common questions about our insurance products and services.
             </p>
           </div>
@@ -254,9 +257,9 @@ const Products: React.FC = () => {
                 a: "Simply call our 24/7 helpline, submit required documents, and our team will guide you through the entire process. Most claims are settled directly with hospitals/service providers."
               }
             ].map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
+              <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">{faq.q}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{faq.a}</p>
               </div>
             ))}
           </div>
