@@ -6,6 +6,5 @@ export default defineConfig({
   plugins: [react()],
   // Add this 'base' property.
   // It should be the name of your GitHub repository, with slashes.
-  base: '/Demo_Chatbot_Website_Project/', 
 })
 
