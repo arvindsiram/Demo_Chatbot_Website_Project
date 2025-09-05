@@ -21,7 +21,7 @@ const App: React.FC = () => {
       {/* This 'basename' prop is the crucial fix. 
         It tells the router that all paths should be relative to this sub-folder.
       */}
-      <Router basename="/Demo_Chatbot_Website_Project">
+      <Router>
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">
