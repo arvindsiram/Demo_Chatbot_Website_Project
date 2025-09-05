@@ -5,43 +5,12 @@ const path = require('path');
 
 const app = express();
 
-// --- START OF DEBUGGING BLOCK ---
-console.log('--- SERVER STARTING: DEBUGGING INFO ---');
-
-// 1. Log the directory paths to see where we are
-console.log(`Executing directory (__dirname): ${__dirname}`);
-console.log(`Current working directory (process.cwd()): ${process.cwd()}`);
-
-// 2. Define and log the path to the 'dist' folder
-const distPath = path.join(process.cwd(), 'dist');
-console.log(`Resolved path to dist folder: ${distPath}`);
-
-// 3. Check if the 'dist' folder and its contents actually exist from the server's perspective
-try {
-  if (fs.existsSync(distPath)) {
-    console.log("'dist' directory EXISTS.");
-    const filesInDist = fs.readdirSync(distPath);
-    console.log("Files inside 'dist':", filesInDist);
-
-    const assetsPath = path.join(distPath, 'assets');
-    if (fs.existsSync(assetsPath)) {
-        console.log("'dist/assets' directory EXISTS.");
-        const filesInAssets = fs.readdirSync(assetsPath);
-        console.log("Files inside 'dist/assets':", filesInAssets);
-    } else {
-        console.log("'dist/assets' directory DOES NOT EXIST.");
-    }
-  } else {
-    console.log("'dist' directory DOES NOT EXIST.");
-  }
-} catch (error) {
-  console.error("Error while checking 'dist' directory:", error);
-}
-console.log('------------------------------------');
-// --- END OF DEBUGGING BLOCK ---
+// --- THE CORRECTED PATH LOGIC ---
+// __dirname is '/.../src'. We go up one level ('..') to the project root, then into 'dist'.
+const distPath = path.join(__dirname, '..', 'dist');
 
 
-// Middleware to log all incoming requests
+// Middleware to log all incoming requests (optional, but helpful to keep for now)
 app.use((req, res, next) => {
   console.log(`Request received: ${req.method} ${req.originalUrl}`);
   next();
@@ -51,11 +20,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Serve the frontend build
+// Serve the frontend build from the correct location
 app.use(express.static(distPath));
 
 // API route (your existing code)
-const dbPath = path.join(__dirname, 'Contact_Information.json');
+const dbPath = path.join(__dirname, '..', 'Contact_Information.json'); // Also correct this path
 let contact_information = [];
 try {
   if (fs.existsSync(dbPath)) {
