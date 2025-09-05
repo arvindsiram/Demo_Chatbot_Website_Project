@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Serve the frontend build
-const distPath = path.join(__dirname, 'dist');
+// NEW, MORE ROBUST CODE
+const distPath = path.join(process.cwd(), 'dist');
 app.use(express.static(distPath));
 
 // API route
