@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Shield, Car, Home, Briefcase, CheckCircle, ArrowRight } from 'lucide-react';
-import { useDarkMode } from '../../DarkModeContext';
+import { useDarkMode } from '../DarkModeContext';
 
 const Products: React.FC = () => {
   // Removed unused useDarkMode variables
