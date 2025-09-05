@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeroSection from './components/HeroSection';
-import QuoteCalculator from './components/QuoteCalculator';
+import HeroSection from '../components/HeroSection';
+import QuoteCalculator from '../components/QuoteCalculator';
 import { Heart, Car, Home as HomeIcon, Briefcase, Award, Users, Clock } from 'lucide-react';
 import { useDarkMode } from '../DarkModeContext';
 
