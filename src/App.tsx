@@ -13,7 +13,7 @@ import Tools from './pages/Tools';
 import Contact from './pages/Contact';
 
 // Import the DarkModeProvider to wrap the entire application
-import { DarkModeProvider } from '../DarkModeContext';
+import { DarkModeProvider } from './DarkModeContext';
 
 const App: React.FC = () => {
   return (
