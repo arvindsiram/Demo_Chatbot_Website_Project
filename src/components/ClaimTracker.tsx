@@ -82,7 +82,7 @@ const ClaimTracker: React.FC = () => {
               value={claimId}
               onChange={(e) => setClaimId(e.target.value)}
               placeholder="e.g., CLM001"
-              className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="p-2 rounded-md bg-gray-50 border-gray-300 text-gray-900 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
             />
             <button
               onClick={handleSearch}
