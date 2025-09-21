@@ -36,7 +36,7 @@ const QuoteCalculator: React.FC = () => {
           <select
             value={request.productType}
             onChange={(e) => setRequest({ ...request, productType: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="p-2 rounded-md bg-gray-50 border-gray-300 text-gray-900 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
           >
             <option value="health">Health Insurance</option>
             <option value="life">Life Insurance</option>
@@ -53,7 +53,7 @@ const QuoteCalculator: React.FC = () => {
             type="number"
             value={request.age || ''}
             onChange={(e) => setRequest({ ...request, age: parseInt(e.target.value) })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="p-2 rounded-md bg-gray-50 border-gray-300 text-gray-900 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
             placeholder="Enter your age"
           />
         </div>
@@ -66,7 +66,7 @@ const QuoteCalculator: React.FC = () => {
             type="number"
             value={request.coverage || ''}
             onChange={(e) => setRequest({ ...request, coverage: parseInt(e.target.value) })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="p-2 rounded-md bg-gray-50 border-gray-300 text-gray-900 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
             placeholder="Enter coverage amount"
           />
         </div>
